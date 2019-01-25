@@ -1,0 +1,35 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql",
+    "sync-s3": "aws s3 sync build/ s3://celestial.education --region eu-west-3",
+    "invalidate-cloudfront": "aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID --paths '/*'",
+    "deploy": "echo 'Remember to source env variables' && npm run relay && npm run build && npm run sync-s3 && npm run invalidate-cloudfront"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "babel-plugin-relay": "^2.0.0-rc.1",
+    "bootstrap-spacing-utils": "0.0.1",
+    "flexpad": "^0.2.0",
+    "normalize.css": "^8.0.0",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-relay": "^1.7.0",
+    "react-scripts": "2.1.0"
+  },
+  "devDependencies": {
+    "graphql": "^14.0.2",
+    "relay-compiler": "^1.7.0"
+  }
+}

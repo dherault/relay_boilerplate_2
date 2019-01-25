@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "main": "handler.js",
+  "scripts": {
+    "start": "serverless offline start --port 5000",
+    "print-schema": "./scripts/printSchema.js",
+    "configure-serverless": "serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY",
+    "deploy": "serverless deploy --verbose -r eu-west-3",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-offline": "^3.31.0"
+  },
+  "dependencies": {
+    "graphql": "^14.0.2",
+    "graphql-relay": "^0.5.5"
+  }
+}
